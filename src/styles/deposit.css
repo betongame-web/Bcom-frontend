@@ -1,0 +1,591 @@
+* {
+  box-sizing: border-box;
+}
+
+.deposit-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1b2030 0%, #181d2a 100%);
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.deposit-topbar {
+  background: #1d2232;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+}
+
+.deposit-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.deposit-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo-white {
+  color: #ffffff;
+}
+
+.logo-pill {
+  color: #041033;
+  background: linear-gradient(90deg, #27e0d5, #49c8ff);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-style: normal;
+}
+
+.logo-green {
+  color: #42efd3;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+
+.deposit-balance-box {
+  display: flex;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #34384f;
+  min-width: 280px;
+}
+
+.deposit-balance-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 14px;
+  flex: 1;
+}
+
+.deposit-balance-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.deposit-balance-title {
+  color: #f0f2f8;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.deposit-balance-arrow {
+  color: #dfe2ec;
+  font-size: 18px;
+}
+
+.deposit-balance-amount {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.deposit-plus-btn {
+  width: 72px;
+  border: none;
+  background: #1dc7ad;
+  color: #ffffff;
+  font-size: 42px;
+  cursor: pointer;
+}
+
+.deposit-user-wrap {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+}
+
+.deposit-user-icon {
+  width: 58px;
+  height: 58px;
+  color: #8f93ac;
+}
+
+.deposit-user-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.deposit-notify-badge {
+  position: absolute;
+  top: -3px;
+  right: -4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #2d3147;
+  color: #ffffff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1d2232;
+  font-weight: 700;
+}
+
+.deposit-content {
+  padding: 18px 22px 30px;
+}
+
+.deposit-title-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 4px 18px;
+}
+
+.back-btn {
+  width: 72px;
+  height: 72px;
+  border: none;
+  border-radius: 14px;
+  background: #353a50;
+  color: #d8dced;
+  font-size: 34px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.deposit-title {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.account-box {
+  width: 100%;
+  min-height: 88px;
+  border-radius: 14px;
+  background: #34384f;
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.crypto-section {
+  background: #252a3b;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
+}
+
+.crypto-header {
+  padding: 22px 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #34384f;
+}
+
+.coin-grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.coin-card {
+  border: none;
+  background: transparent;
+  padding: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+}
+
+.coin-card-active:hover {
+  transform: translateY(-2px);
+}
+
+.coin-card-inactive {
+  filter: grayscale(100%);
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.coin-card-inactive:hover {
+  transform: none;
+}
+
+.coin-top {
+  height: 170px;
+  background: #f2f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coin-bottom {
+  min-height: 60px;
+  background: #aab2bc;
+  color: #ffffff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.icons-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.double-icons {
+  gap: 10px;
+}
+
+.coin-icon-shell {
+  width: 84px;
+  height: 84px;
+  border-radius: 999px;
+  background: #efefef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-fit {
+  width: 68px;
+  height: 68px;
+  display: block;
+}
+
+/* popup */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 14, 20, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 999;
+}
+
+.popup-box {
+  width: 100%;
+  max-width: 760px;
+  background: #191f2f;
+  border-radius: 18px;
+  padding: 22px;
+  position: relative;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+.popup-box-large {
+  max-width: 760px;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 40px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.popup-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.popup-mini-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: #efefef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-mini-icon .svg-fit {
+  width: 38px;
+  height: 38px;
+}
+
+.popup-divider {
+  height: 1px;
+  background: #2a3147;
+  margin-bottom: 18px;
+}
+
+.popup-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #f5f7fb;
+  margin: 0 0 18px;
+}
+
+.red-text {
+  color: #e04a4a;
+  font-weight: 700;
+}
+
+.confirm-btn {
+  width: 100%;
+  height: 72px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #6a28ff, #a22cff);
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.deposit-rate-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.deposit-address-label {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.deposit-address-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.deposit-address-text {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 700;
+  word-break: break-all;
+}
+
+.copy-address-btn {
+  border: none;
+  border-radius: 10px;
+  background: #34394c;
+  color: #ffffff;
+  height: 42px;
+  padding: 0 16px;
+  cursor: pointer;
+}
+
+.qr-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 14px 0 18px;
+}
+
+.qr-image {
+  width: 240px;
+  height: 240px;
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.deposit-note-box {
+  background: #2d3248;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .deposit-topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .topbar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .deposit-balance-box {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .deposit-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .deposit-topbar {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .deposit-logo {
+    font-size: 22px;
+  }
+
+  .topbar-right {
+    gap: 10px;
+  }
+
+  .deposit-balance-title,
+  .deposit-balance-amount {
+    font-size: 15px;
+  }
+
+  .deposit-plus-btn {
+    width: 58px;
+    font-size: 34px;
+  }
+
+  .deposit-user-wrap {
+    width: 44px;
+    height: 44px;
+  }
+
+  .deposit-user-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .deposit-notify-badge {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+
+  .deposit-content {
+    padding: 14px 14px 24px;
+  }
+
+  .deposit-title-row {
+    gap: 14px;
+    padding: 8px 0 16px;
+  }
+
+  .back-btn {
+    width: 54px;
+    height: 54px;
+    font-size: 26px;
+    border-radius: 12px;
+  }
+
+  .deposit-title {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .account-box {
+    min-height: 74px;
+    font-size: 16px;
+    padding: 0 16px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+  }
+
+  .crypto-section {
+    border-radius: 16px;
+  }
+
+  .crypto-header {
+    padding: 16px;
+    font-size: 18px;
+  }
+
+  .coin-grid {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .coin-top {
+    height: 120px;
+  }
+
+  .coin-bottom {
+    min-height: 46px;
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .coin-icon-shell {
+    width: 58px;
+    height: 58px;
+  }
+
+  .svg-fit {
+    width: 46px;
+    height: 46px;
+  }
+
+  .double-icons {
+    gap: 6px;
+  }
+
+  .popup-box {
+    padding: 16px;
+  }
+
+  .popup-close {
+    font-size: 34px;
+    top: 8px;
+    right: 10px;
+  }
+
+  .popup-text,
+  .deposit-rate-text,
+  .deposit-address-label,
+  .deposit-address-text,
+  .deposit-note-box {
+    font-size: 15px;
+  }
+
+  .confirm-btn {
+    height: 58px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+
+  .qr-image {
+    width: 190px;
+    height: 190px;
+  }
+
+  .deposit-note-box {
+    padding: 14px;
+  }
+}
