@@ -1,12 +1,55 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../config";
 import "../styles/login.css";
 
 export default function Login() {
   const navigate = useNavigate();
 
-  function handleLogin(e) {
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorText, setErrorText] = useState("");
+
+  async function handleLogin(e) {
     e.preventDefault();
-    navigate("/profile");
+    setErrorText("");
+
+    if (!userId.trim() || !password.trim()) {
+      setErrorText("User ID এবং password দিন");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const res = await fetch(`${API_URL}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userId.trim(),
+          password: password.trim(),
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setErrorText(data.message || "Login failed");
+        return;
+      }
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.user.userId);
+
+      navigate("/profile");
+    } catch (error) {
+      setErrorText("Server connection failed");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -28,18 +71,24 @@ export default function Login() {
         <form className="login-card" onSubmit={handleLogin}>
           <input
             type="text"
-            placeholder="username"
+            placeholder="user id"
             className="portal-input"
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
           />
 
           <input
             type="password"
             placeholder="password"
             className="portal-input"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit" className="login-btn">
-            Login
+          {errorText ? <p className="login-error">{errorText}</p> : null}
+
+          <button type="submit" className="login-btn" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
       </main>
