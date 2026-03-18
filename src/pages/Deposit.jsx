@@ -312,7 +312,7 @@ export default function Deposit() {
   }
 
   function handleCopyAddress() {
-    navigator.clipboard.writeText("0xde3682374c527b1c593a689d170e5baea934e56c");
+    navigator.clipboard.writeText("0xA3E55dd295f04352e6c6A42F63375A9D3F9e8FC0");
   }
 
   return (
@@ -468,7 +468,7 @@ export default function Deposit() {
 
             <div className="deposit-address-row">
               <span className="deposit-address-text">
-                0xde3682374c527b1c593a689d170e5baea934e56c
+                0xA3E55dd295f04352e6c6A42F63375A9D3F9e8FC0
               </span>
               <button className="copy-address-btn" onClick={handleCopyAddress}>
                 Copy
@@ -478,7 +478,7 @@ export default function Deposit() {
             <div className="qr-wrapper">
               <img
                 className="qr-image"
-                src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=0xde3682374c527b1c593a689d170e5baea934e56c"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=0xA3E55dd295f04352e6c6A42F63375A9D3F9e8FC0"
                 alt="QR Code"
               />
             </div>
