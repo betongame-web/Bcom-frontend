@@ -9,7 +9,7 @@ export default function Profile() {
   const [formData, setFormData] = useState({
     email: "",
     password: "********",
-    registration: "16/03/2026",
+    registration: "18/03/2026",
     phone: "",
     lastName: "",
     firstName: "",
@@ -337,7 +337,7 @@ export default function Profile() {
 
       <div className="profile-account-row">
         <span>Main account</span>
-        <span>№1598145559</span>
+        <span>№1603944251</span>
       </div>
 
       {message ? <div className="profile-message-bar">{message}</div> : null}
