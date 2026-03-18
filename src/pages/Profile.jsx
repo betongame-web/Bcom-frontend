@@ -20,13 +20,25 @@ export default function Profile() {
     documentIssueDate: "",
     country: "Pakistan",
     city: "",
-    address: "",
+    address: ""
+  });
+
+  const [fieldLocks, setFieldLocks] = useState({
+    email: false,
+    phone: false,
+    lastName: false,
+    firstName: false,
+    dateOfBirth: false,
+    placeOfBirth: false,
+    documentNumber: false,
+    documentIssueDate: false,
+    city: false,
+    address: false
   });
 
   const [editingField, setEditingField] = useState(null);
-  const [profileLocked, setProfileLocked] = useState(false);
   const [loadingProfile, setLoadingProfile] = useState(true);
-  const [savingProfile, setSavingProfile] = useState(false);
+  const [savingField, setSavingField] = useState(false);
   const [message, setMessage] = useState("");
 
   const fieldLabels = {
@@ -39,7 +51,7 @@ export default function Profile() {
     placeOfBirth: "Place of birth",
     documentNumber: "Document number",
     documentIssueDate: "Document issue date",
-    address: "Permanent registered address",
+    address: "Permanent registered address"
   };
 
   useEffect(() => {
@@ -61,8 +73,8 @@ export default function Profile() {
       const res = await fetch(`${API_URL}/api/profile/me`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
       });
 
       const data = await res.json();
@@ -75,8 +87,7 @@ export default function Profile() {
       }
 
       const profile = data.user?.profile || {};
-
-      setProfileLocked(Boolean(data.user?.profileLocked));
+      const locks = data.user?.fieldLocks || {};
 
       setFormData((prev) => ({
         ...prev,
@@ -91,8 +102,21 @@ export default function Profile() {
         documentIssueDate: profile.documentIssueDate || "",
         country: profile.country || "Pakistan",
         city: profile.city || "",
-        address: profile.address || "",
+        address: profile.address || ""
       }));
+
+      setFieldLocks({
+        email: Boolean(locks.email),
+        phone: Boolean(locks.phone),
+        lastName: Boolean(locks.lastName),
+        firstName: Boolean(locks.firstName),
+        dateOfBirth: Boolean(locks.dateOfBirth),
+        placeOfBirth: Boolean(locks.placeOfBirth),
+        documentNumber: Boolean(locks.documentNumber),
+        documentIssueDate: Boolean(locks.documentIssueDate),
+        city: Boolean(locks.city),
+        address: Boolean(locks.address)
+      });
     } catch (error) {
       setMessage("Profile load failed");
     } finally {
@@ -101,10 +125,7 @@ export default function Profile() {
   }
 
   function openEditor(field) {
-    if (profileLocked) {
-      setMessage("Profile already submitted and locked");
-      return;
-    }
+    if (fieldLocks[field]) return;
     setEditingField(field);
     setMessage("");
   }
@@ -114,24 +135,15 @@ export default function Profile() {
   }
 
   function handleChange(e) {
-    if (profileLocked) return;
-
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
   }
 
-  function saveField() {
-    setEditingField(null);
-  }
-
-  async function handleSaveProfile() {
-    if (profileLocked) {
-      setMessage("Profile already submitted and locked");
-      return;
-    }
+  async function saveField() {
+    if (!editingField) return;
 
     const token = localStorage.getItem("token");
 
@@ -141,65 +153,119 @@ export default function Profile() {
     }
 
     try {
-      setSavingProfile(true);
+      setSavingField(true);
       setMessage("");
 
-      const payload = {
-        email: formData.email,
-        phone: formData.phone,
-        lastName: formData.lastName,
-        firstName: formData.firstName,
-        dateOfBirth: formData.dateOfBirth,
-        placeOfBirth: formData.placeOfBirth,
-        documentType: formData.documentType,
-        documentNumber: formData.documentNumber,
-        documentIssueDate: formData.documentIssueDate,
-        country: formData.country,
-        city: formData.city,
-        address: formData.address,
-      };
-
-      const res = await fetch(`${API_URL}/api/profile/save-once`, {
+      const res = await fetch(`${API_URL}/api/profile/save-field`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          field: editingField,
+          value: formData[editingField]
+        })
       });
 
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        setMessage(data.message || "Profile save failed");
+        setMessage(data.message || "Field save failed");
         return;
       }
 
       const profile = data.user?.profile || {};
+      const locks = data.user?.fieldLocks || {};
 
       setFormData((prev) => ({
         ...prev,
-        email: profile.email || "",
-        phone: profile.phone || "",
-        lastName: profile.lastName || "",
-        firstName: profile.firstName || "",
-        dateOfBirth: profile.dateOfBirth || "",
-        placeOfBirth: profile.placeOfBirth || "",
-        documentType: profile.documentType || "National ID card",
-        documentNumber: profile.documentNumber || "",
-        documentIssueDate: profile.documentIssueDate || "",
-        country: profile.country || "Pakistan",
-        city: profile.city || "",
-        address: profile.address || "",
+        email: profile.email || prev.email,
+        phone: profile.phone || prev.phone,
+        lastName: profile.lastName || prev.lastName,
+        firstName: profile.firstName || prev.firstName,
+        dateOfBirth: profile.dateOfBirth || prev.dateOfBirth,
+        placeOfBirth: profile.placeOfBirth || prev.placeOfBirth,
+        documentType: profile.documentType || prev.documentType,
+        documentNumber: profile.documentNumber || prev.documentNumber,
+        documentIssueDate: profile.documentIssueDate || prev.documentIssueDate,
+        country: profile.country || prev.country,
+        city: profile.city || prev.city,
+        address: profile.address || prev.address
       }));
 
-      setProfileLocked(true);
+      setFieldLocks({
+        email: Boolean(locks.email),
+        phone: Boolean(locks.phone),
+        lastName: Boolean(locks.lastName),
+        firstName: Boolean(locks.firstName),
+        dateOfBirth: Boolean(locks.dateOfBirth),
+        placeOfBirth: Boolean(locks.placeOfBirth),
+        documentNumber: Boolean(locks.documentNumber),
+        documentIssueDate: Boolean(locks.documentIssueDate),
+        city: Boolean(locks.city),
+        address: Boolean(locks.address)
+      });
+
       setEditingField(null);
-      setMessage("Profile saved successfully and locked forever");
+      setMessage("Saved successfully");
     } catch (error) {
-      setMessage("Profile save failed");
+      setMessage("Field save failed");
     } finally {
-      setSavingProfile(false);
+      setSavingField(false);
+    }
+  }
+
+  async function saveCityField() {
+    if (fieldLocks.city) return;
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/");
+      return;
+    }
+
+    if (!formData.city) {
+      setMessage("Select city first");
+      return;
+    }
+
+    try {
+      setSavingField(true);
+      setMessage("");
+
+      const res = await fetch(`${API_URL}/api/profile/save-field`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          field: "city",
+          value: formData.city
+        })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setMessage(data.message || "City save failed");
+        return;
+      }
+
+      const locks = data.user?.fieldLocks || {};
+
+      setFieldLocks((prev) => ({
+        ...prev,
+        city: Boolean(locks.city)
+      }));
+
+      setMessage("Saved successfully");
+    } catch (error) {
+      setMessage("City save failed");
+    } finally {
+      setSavingField(false);
     }
   }
 
@@ -274,24 +340,20 @@ export default function Profile() {
         <span>№1598145559</span>
       </div>
 
-      {message ? (
-        <div className="profile-message-bar">{message}</div>
-      ) : null}
+      {message ? <div className="profile-message-bar">{message}</div> : null}
 
       <main className="profile-content">
         <div className="profile-form-card">
           <div className="profile-form-row">
             <div className="profile-label">Email</div>
-            <div
-              className={`profile-value ${!formData.email ? "muted danger-text" : ""}`}
-            >
+            <div className={`profile-value ${!formData.email ? "muted danger-text" : ""}`}>
               {formData.email || "Not specified"}
             </div>
             <div className="profile-action-cell">
               <button
                 className="profile-action-btn"
                 onClick={() => openEditor("email")}
-                disabled={profileLocked}
+                disabled={fieldLocks.email}
               >
                 {formData.email ? "Change" : "Add"}
               </button>
@@ -302,11 +364,7 @@ export default function Profile() {
             <div className="profile-label">Password</div>
             <div className="profile-value">{formData.password}</div>
             <div className="profile-action-cell">
-              <button
-                className="profile-action-btn"
-                onClick={() => openEditor("password")}
-                disabled={profileLocked}
-              >
+              <button className="profile-action-btn" disabled>
                 Change
               </button>
             </div>
@@ -325,7 +383,7 @@ export default function Profile() {
               <button
                 className="profile-action-btn"
                 onClick={() => openEditor("phone")}
-                disabled={profileLocked}
+                disabled={fieldLocks.phone}
               >
                 Change
               </button>
@@ -341,7 +399,7 @@ export default function Profile() {
               <button
                 className="profile-action-btn"
                 onClick={() => openEditor("lastName")}
-                disabled={profileLocked}
+                disabled={fieldLocks.lastName}
               >
                 Change
               </button>
@@ -357,7 +415,7 @@ export default function Profile() {
               <button
                 className="profile-action-btn"
                 onClick={() => openEditor("firstName")}
-                disabled={profileLocked}
+                disabled={fieldLocks.firstName}
               >
                 Change
               </button>
@@ -373,7 +431,7 @@ export default function Profile() {
               <button
                 className="profile-action-btn"
                 onClick={() => openEditor("dateOfBirth")}
-                disabled={profileLocked}
+                disabled={fieldLocks.dateOfBirth}
               >
                 Change
               </button>
@@ -387,7 +445,7 @@ export default function Profile() {
               <button
                 className="profile-action-btn"
                 onClick={() => openEditor("placeOfBirth")}
-                disabled={profileLocked}
+                disabled={fieldLocks.placeOfBirth}
               >
                 Change
               </button>
@@ -409,7 +467,7 @@ export default function Profile() {
               <button
                 className="profile-action-btn"
                 onClick={() => openEditor("documentNumber")}
-                disabled={profileLocked}
+                disabled={fieldLocks.documentNumber}
               >
                 Change
               </button>
@@ -423,7 +481,7 @@ export default function Profile() {
               <button
                 className="profile-action-btn"
                 onClick={() => openEditor("documentIssueDate")}
-                disabled={profileLocked}
+                disabled={fieldLocks.documentIssueDate}
               >
                 Change
               </button>
@@ -444,7 +502,7 @@ export default function Profile() {
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                disabled={profileLocked}
+                disabled={fieldLocks.city}
               >
                 <option value="">Select city</option>
                 <option>Abbottabad</option>
@@ -545,6 +603,15 @@ export default function Profile() {
                 <option>Zhob</option>
               </select>
             </div>
+            <div className="profile-action-cell">
+              <button
+                className="profile-action-btn"
+                onClick={saveCityField}
+                disabled={fieldLocks.city || savingField}
+              >
+                {formData.city ? "Save" : "Save"}
+              </button>
+            </div>
           </div>
 
           <div className="profile-form-row address-row">
@@ -556,24 +623,12 @@ export default function Profile() {
               <button
                 className="profile-action-btn"
                 onClick={() => openEditor("address")}
-                disabled={profileLocked}
+                disabled={fieldLocks.address}
               >
                 Change
               </button>
             </div>
           </div>
-
-          <button
-            className="save-btn full-save-btn"
-            onClick={handleSaveProfile}
-            disabled={profileLocked || savingProfile}
-          >
-            {profileLocked
-              ? "Profile Locked"
-              : savingProfile
-              ? "Saving..."
-              : "Save"}
-          </button>
         </div>
 
         <button className="cancel-btn" onClick={handleLogout}>
@@ -610,14 +665,14 @@ export default function Profile() {
                 onChange={handleChange}
                 placeholder={`Enter ${fieldLabels[editingField]}`}
               />
-        )}
+            )}
 
             <div className="edit-modal-actions">
               <button className="modal-btn modal-cancel" onClick={closeEditor}>
                 Cancel
               </button>
               <button className="modal-btn modal-save" onClick={saveField}>
-                Save
+                {savingField ? "Saving..." : "Save"}
               </button>
             </div>
           </div>
