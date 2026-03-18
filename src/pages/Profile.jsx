@@ -610,4 +610,19 @@ export default function Profile() {
                 onChange={handleChange}
                 placeholder={`Enter ${fieldLabels[editingField]}`}
               />
-         
+        )}
+
+            <div className="edit-modal-actions">
+              <button className="modal-btn modal-cancel" onClick={closeEditor}>
+                Cancel
+              </button>
+              <button className="modal-btn modal-save" onClick={saveField}>
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
