@@ -361,7 +361,7 @@ export default function Deposit() {
           <h1 className="deposit-title">Deposit into personal account</h1>
         </section>
 
-        <div className="account-box">Account 1601789427</div>
+        <div className="account-box">Account 1603944251</div>
 
         <section className="crypto-section">
           <div className="crypto-header">Cryptocurrency</div>
