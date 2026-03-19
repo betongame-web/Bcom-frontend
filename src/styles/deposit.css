@@ -54,57 +54,64 @@
 .topbar-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   margin-left: auto;
 }
 
+/* balance box */
 .deposit-balance-box {
   display: flex;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 12px;
   background: #34384f;
-  min-width: 280px;
+  min-width: 240px;
+  height: 56px;
 }
 
 .deposit-balance-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px 14px;
+  padding: 8px 12px;
   flex: 1;
 }
 
 .deposit-balance-title-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .deposit-balance-title {
   color: #f0f2f8;
-  font-size: 18px;
-  line-height: 1.2;
+  font-size: 16px;
+  line-height: 1.1;
 }
 
 .deposit-balance-arrow {
   color: #dfe2ec;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .deposit-balance-amount {
   color: #ffffff;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .deposit-plus-btn {
-  width: 72px;
+  width: 52px;
+  min-width: 52px;
   border: none;
   background: #1dc7ad;
   color: #ffffff;
-  font-size: 42px;
+  font-size: 34px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
 .deposit-user-wrap {
@@ -452,25 +459,55 @@
 @media (max-width: 600px) {
   .deposit-topbar {
     padding: 16px;
-    gap: 14px;
+    gap: 12px;
   }
 
   .deposit-logo {
     font-size: 22px;
   }
 
-  .topbar-right {
-    gap: 10px;
+  .deposit-logo-row {
+    gap: 5px;
   }
 
-  .deposit-balance-title,
+  .topbar-right {
+    gap: 8px;
+  }
+
+  .deposit-balance-box {
+    flex: 0 0 auto;
+    width: 190px;
+    min-width: 190px;
+    height: 44px;
+    border-radius: 8px;
+  }
+
+  .deposit-balance-left {
+    padding: 5px 8px;
+  }
+
+  .deposit-balance-title-row {
+    gap: 4px;
+  }
+
+  .deposit-balance-title {
+    font-size: 12px;
+    line-height: 1.1;
+  }
+
+  .deposit-balance-arrow {
+    font-size: 11px;
+  }
+
   .deposit-balance-amount {
-    font-size: 15px;
+    font-size: 12px;
+    margin-top: 1px;
   }
 
   .deposit-plus-btn {
-    width: 58px;
-    font-size: 34px;
+    width: 30px;
+    min-width: 30px;
+    font-size: 20px;
   }
 
   .deposit-user-wrap {
