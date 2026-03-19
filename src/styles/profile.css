@@ -64,7 +64,7 @@
   overflow: hidden;
   border-radius: 16px;
   background: #34384f;
-  min-width: 280px;
+  min-width: 80px;
 }
 
 .balance-left {
@@ -95,16 +95,16 @@
 .balance-amount {
   color: #ffffff;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 70;
   margin-top: 4px;
 }
 
 .balance-plus-btn {
-  width: 72px;
+  width: 44px;
   border: none;
   background: #1dc7ad;
   color: #ffffff;
-  font-size: 42px;
+  font-size: 44px;
   cursor: pointer;
 }
 
