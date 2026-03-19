@@ -1,3 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 .profile-page {
   min-height: 100vh;
   background: linear-gradient(180deg, #1b2030 0%, #191e2c 100%);
@@ -55,57 +71,64 @@
 .profile-top-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   margin-left: auto;
 }
 
+/* smaller balance box */
 .balance-box {
   display: flex;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 10px;
   background: #34384f;
-  min-width: 80px;
+  min-width: 0;
+  height: 48px;
 }
 
 .balance-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px 14px;
+  padding: 6px 10px;
   flex: 1;
 }
 
 .balance-title-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .balance-title {
   color: #f0f2f8;
-  font-size: 18px;
-  line-height: 1.2;
+  font-size: 13px;
+  line-height: 1.1;
 }
 
 .balance-arrow {
   color: #dfe2ec;
-  font-size: 18px;
+  font-size: 13px;
 }
 
 .balance-amount {
   color: #ffffff;
-  font-size: 18px;
-  font-weight: 70;
-  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 2px;
 }
 
 .balance-plus-btn {
-  width: 44px;
+  width: 36px;
+  min-width: 36px;
   border: none;
   background: #1dc7ad;
   color: #ffffff;
-  font-size: 44px;
+  font-size: 24px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
 .profile-user-wrap {
@@ -436,22 +459,28 @@
   }
 
   .profile-top-right {
-    gap: 10px;
+    gap: 8px;
+  }
+
+  .balance-box {
+    height: 44px;
+    border-radius: 8px;
   }
 
   .balance-left {
-    padding: 8px 12px;
+    padding: 5px 8px;
   }
 
   .balance-title,
   .balance-amount,
   .balance-arrow {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .balance-plus-btn {
-    width: 58px;
-    font-size: 34px;
+    width: 34px;
+    min-width: 34px;
+    font-size: 22px;
   }
 
   .profile-user-wrap {
