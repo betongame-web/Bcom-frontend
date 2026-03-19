@@ -54,50 +54,58 @@ export default function Login() {
 
   return (
     <div className="login-page">
-      <div className="bg-orb orb-top-left"></div>
-      <div className="bg-orb orb-top-right"></div>
-      <div className="bg-orb orb-center"></div>
-      <div className="bg-orb orb-bottom-left"></div>
+      <div className="login-overlay"></div>
 
-      <header className="login-brand login-brand-top">
-        <span className="brand-white">BET</span>
-        <span className="brand-pill">ON</span>
-        <span className="brand-green">GAME</span>
-      </header>
-
-      <main className="portal-wrap">
-        <h1 className="portal-title">USER PORTAL</h1>
-
+      <main className="login-center">
         <form className="login-card" onSubmit={handleLogin}>
-          <input
-            type="text"
-            placeholder="user id"
-            className="portal-input"
-            value={userId}
-            onChange={(e) => setUserId(e.target.value)}
-          />
+          <div className="login-topbar">
+            <div className="login-logo-wrap">
+              <div className="management-title">BetOnGame Management</div>
 
-          <input
-            type="password"
-            placeholder="password"
-            className="portal-input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+              <div className="login-brand">
+                <span className="brand-white">BET</span>
+
+                <span className="brand-toggle">
+                  <span className="brand-toggle-circle"></span>
+                </span>
+
+                <span className="brand-white brand-n">N</span>
+                <span className="brand-green">GAME</span>
+              </div>
+            </div>
+
+            <div className="lang-box">🇬🇧 EN ▾</div>
+          </div>
+
+          <div className="input-group">
+            <span className="input-icon">👤</span>
+            <input
+              type="text"
+              placeholder="Enter username"
+              className="portal-input"
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
+            />
+          </div>
+
+          <div className="input-group">
+            <span className="input-icon">🔒</span>
+            <input
+              type="password"
+              placeholder="Enter password"
+              className="portal-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
           {errorText ? <p className="login-error">{errorText}</p> : null}
 
           <button type="submit" className="login-btn" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "LOGGING IN..." : "LOG IN"}
           </button>
         </form>
       </main>
-
-      <footer className="login-brand login-brand-bottom">
-        <span className="brand-white">BET</span>
-        <span className="brand-pill">ON</span>
-        <span className="brand-green">GAME</span>
-      </footer>
     </div>
   );
 }
