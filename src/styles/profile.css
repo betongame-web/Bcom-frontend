@@ -419,31 +419,6 @@ body {
   color: #ffffff;
 }
 
-@media (max-width: 900px) {
-  .profile-topbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .profile-top-right {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .balance-box {
-    min-width: 0;
-    flex: 1;
-  }
-
-  .profile-form-row {
-    grid-template-columns: 1fr 1fr auto;
-  }
-
-  .city-row {
-    grid-template-columns: 1fr 1.4fr auto;
-  }
-}
-
 @media (max-width: 600px) {
   .profile-topbar {
     padding: 14px 16px;
@@ -463,6 +438,8 @@ body {
   }
 
   .balance-box {
+    flex: 0 0 auto;
+    width: 190px;
     height: 44px;
     border-radius: 8px;
   }
@@ -478,9 +455,9 @@ body {
   }
 
   .balance-plus-btn {
-    width: 34px;
-    min-width: 34px;
-    font-size: 22px;
+    width: 30px;
+    min-width: 30px;
+    font-size: 20px;
   }
 
   .profile-user-wrap {
