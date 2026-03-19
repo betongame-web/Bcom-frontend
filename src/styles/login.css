@@ -50,7 +50,7 @@ body {
   width: 100%;
   max-width: 390px;
   background: rgba(28, 35, 53, 0.96);
-  padding: 22px 26px 26px;
+  padding: 22px 18px 22px;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
 }
 
@@ -58,8 +58,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 22px;
+  gap: 8px;
+  margin-bottom: 18px;
 }
 
 .login-logo-wrap {
@@ -67,25 +67,22 @@ body {
   min-width: 0;
 }
 
+/* এটা আর দরকার নেই, কিন্তু রেখে দিলাম যাতে সমস্যা না হয় */
 .management-title {
-  color: #ffffff;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: 14px;
-  letter-spacing: 0.2px;
+  display: none;
 }
 
 .login-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   flex-wrap: nowrap;
+  min-width: 0;
 }
 
 .brand-white {
   color: #ffffff;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 800;
   font-style: italic;
   line-height: 1;
@@ -93,18 +90,23 @@ body {
 
 .brand-green {
   color: #39e4d0;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 800;
   line-height: 1;
 }
 
 .brand-n {
-  margin-left: -2px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1;
+  margin-left: -1px;
 }
 
 .brand-toggle {
-  width: 92px;
-  height: 46px;
+  width: 72px;
+  height: 34px;
   border-radius: 999px;
   background: #39e4d0;
   position: relative;
@@ -114,25 +116,36 @@ body {
 
 .brand-toggle-circle {
   position: absolute;
-  top: 5px;
-  right: 6px;
-  width: 36px;
-  height: 36px;
+  top: 4px;
+  right: 5px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: #1c2335;
 }
 
+.brand-management {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  margin-left: 6px;
+  opacity: 0.95;
+  white-space: nowrap;
+}
+
 .lang-box {
   color: #ffffff;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
-  padding-top: 3px;
+  padding-top: 2px;
+  flex-shrink: 0;
 }
 
 .input-group {
   position: relative;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .input-icon {
@@ -147,13 +160,13 @@ body {
 
 .portal-input {
   width: 100%;
-  height: 42px;
+  height: 38px;
   border: none;
   outline: none;
   border-radius: 2px;
   background: #f2f2f2;
   color: #333333;
-  font-size: 14px;
+  font-size: 13px;
   padding: 0 12px 0 36px;
   box-shadow: none;
 }
@@ -167,26 +180,27 @@ body {
 }
 
 .login-error {
-  margin: 4px 0 12px;
+  margin: 2px 0 10px;
   color: #ff9b9b;
-  font-size: 13px;
+  font-size: 12px;
   text-align: left;
   font-weight: 500;
 }
 
 .login-btn {
   width: 100%;
-  height: 40px;
+  height: 38px;
   border: none;
   border-radius: 2px;
   cursor: pointer;
   background: #2d97a6;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 17px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   transition: background 0.2s ease, color 0.2s ease;
+  margin-top: 2px;
 }
 
 .login-btn:hover {
@@ -205,33 +219,69 @@ body {
   }
 
   .login-card {
-    max-width: 360px;
-    padding: 20px 20px 22px;
+    max-width: 280px;
+    padding: 16px 16px 18px;
   }
 
-  .management-title {
-    font-size: 20px;
-    margin-bottom: 12px;
+  .login-topbar {
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .login-brand {
+    gap: 4px;
   }
 
   .brand-white,
-  .brand-green {
-    font-size: 24px;
+  .brand-green,
+  .brand-n {
+    font-size: 16px;
   }
 
   .brand-toggle {
-    width: 74px;
-    height: 38px;
+    width: 48px;
+    height: 24px;
   }
 
   .brand-toggle-circle {
-    width: 28px;
-    height: 28px;
-    top: 5px;
-    right: 5px;
+    width: 18px;
+    height: 18px;
+    top: 3px;
+    right: 3px;
+  }
+
+  .brand-management {
+    font-size: 9px;
+    margin-left: 4px;
   }
 
   .lang-box {
-    font-size: 13px;
+    font-size: 9px;
+    padding-top: 1px;
+  }
+
+  .input-group {
+    margin-bottom: 10px;
+  }
+
+  .input-icon {
+    left: 10px;
+    font-size: 12px;
+  }
+
+  .portal-input {
+    height: 32px;
+    font-size: 11px;
+    padding: 0 10px 0 30px;
+  }
+
+  .login-error {
+    font-size: 11px;
+    margin: 2px 0 8px;
+  }
+
+  .login-btn {
+    height: 32px;
+    font-size: 12px;
   }
 }
