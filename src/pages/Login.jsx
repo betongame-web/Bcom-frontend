@@ -60,21 +60,20 @@ export default function Login() {
         <form className="login-card" onSubmit={handleLogin}>
           <div className="login-topbar">
             <div className="login-logo-wrap">
-              <div className="management-title">BetOnGame Management</div>
+  <div className="login-brand">
+    <span className="brand-white">BET</span>
 
-              <div className="login-brand">
-                <span className="brand-white">BET</span>
+    <span className="brand-toggle">
+      <span className="brand-toggle-circle"></span>
+    </span>
 
-                <span className="brand-toggle">
-                  <span className="brand-toggle-circle"></span>
-                </span>
+    <span className="brand-white brand-n">N</span>
+    <span className="brand-green">GAME</span>
+    <span className="brand-management">Management</span>
+  </div>
+</div>
 
-                <span className="brand-white brand-n">N</span>
-                <span className="brand-green">GAME</span>
-              </div>
-            </div>
-
-            <div className="lang-box">🇬🇧 EN ▾</div>
+            <div className="lang-box">🇬🇧 EN </div>
           </div>
 
           <div className="input-group">
