@@ -489,7 +489,7 @@ export default function Profile() {
           <div className="profile-form-row">
             <div className="profile-label">Country</div>
             <div className="profile-value"></div>
-            <div className="profile-right-text">{formData.country}</div>
+            <div className="profile-right-text">Bangladesh</div>
           </div>
 
           <div className="profile-form-row city-row">
