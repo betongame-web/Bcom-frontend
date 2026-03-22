@@ -315,6 +315,17 @@ export default function Deposit() {
     navigator.clipboard.writeText("0xA3E55dd295f04352e6c6A42F63375A9D3F9e8FC0");
   }
 
+  function goToProfile() {
+    navigate("/profile");
+  }
+
+  function handleUserKeyDown(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      navigate("/profile");
+    }
+  }
+
   return (
     <div className="deposit-page">
       <header className="deposit-topbar">
@@ -341,7 +352,14 @@ export default function Deposit() {
             <button className="deposit-plus-btn">+</button>
           </div>
 
-          <div className="deposit-user-wrap">
+          <div
+            className="deposit-user-wrap"
+            onClick={goToProfile}
+            onKeyDown={handleUserKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label="Go to personal profile"
+          >
             <div className="deposit-user-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                 <circle cx="12" cy="8" r="4" />
