@@ -343,7 +343,7 @@ export default function Deposit() {
           <div className="deposit-balance-box">
             <div className="deposit-balance-left">
               <div className="deposit-balance-title-row">
-                <span className="deposit-balance-title">Main account (PKR)</span>
+                <span className="deposit-balance-title">Main account (BDT)</span>
                 <span className="deposit-balance-arrow">⌄</span>
               </div>
               <span className="deposit-balance-amount">0</span>
