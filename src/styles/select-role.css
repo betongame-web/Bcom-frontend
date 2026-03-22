@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.select-role-page {
+  position: relative;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(8, 13, 26, 0.78), rgba(8, 13, 26, 0.85)),
+    linear-gradient(180deg, #1b2030 0%, #181d2a 100%);
+  overflow: hidden;
+}
+
+.select-role-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(54, 215, 200, 0.12), transparent 28%),
+    radial-gradient(circle at 80% 30%, rgba(106, 40, 255, 0.12), transparent 24%),
+    radial-gradient(circle at 50% 80%, rgba(73, 200, 255, 0.10), transparent 30%);
+}
+
+.select-role-wrap {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.select-role-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(31, 36, 51, 0.96);
+  border-radius: 18px;
+  padding: 28px 22px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.select-role-title {
+  margin: 0;
+  text-align: center;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.select-role-subtitle {
+  margin: 10px 0 24px;
+  text-align: center;
+  color: #cfd5e6;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.select-role-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.select-role-btn {
+  width: 100%;
+  height: 58px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #36d7c8, #49c8ff);
+  color: #08111f;
+  font-size: 18px;
+  font-weight: 800;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.select-role-btn:hover {
+  transform: translateY(-1px);
+}
+
+.select-role-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .select-role-card {
+    max-width: 340px;
+    padding: 22px 16px;
+    border-radius: 16px;
+  }
+
+  .select-role-title {
+    font-size: 24px;
+  }
+
+  .select-role-subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .select-role-btn {
+    height: 50px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+}
