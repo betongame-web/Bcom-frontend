@@ -4,6 +4,14 @@ import "../styles/select-role.css";
 export default function SelectRole() {
   const navigate = useNavigate();
 
+  function handleWorkplaceClick() {
+    alert("Workplace is not Active. Please contact your personal Manager.");
+  }
+
+  function handleTeamLeaderClick() {
+    navigate("/profile");
+  }
+
   return (
     <div className="select-role-page">
       <div className="select-role-overlay"></div>
@@ -18,14 +26,14 @@ export default function SelectRole() {
           <div className="select-role-actions">
             <button
               className="select-role-btn"
-              onClick={() => navigate("/workplace")}
+              onClick={handleWorkplaceClick}
             >
               Workplace
             </button>
 
             <button
               className="select-role-btn"
-              onClick={() => navigate("/team-leader")}
+              onClick={handleTeamLeaderClick}
             >
               Team Leader
             </button>
