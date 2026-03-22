@@ -479,7 +479,7 @@ export default function Deposit() {
 
             <div className="popup-divider"></div>
 
-            <p className="deposit-rate-text">1 USDT = 273.6236538 PKR</p>
+            <p className="deposit-rate-text">1 USDT = 127.6236538 BDT</p>
             <p className="deposit-address-label">
               Copy the address or scan the QR code:
             </p>
