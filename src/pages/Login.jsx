@@ -44,7 +44,7 @@ export default function Login() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("userId", data.user.userId);
 
-      navigate("/profile");
+      navigate("/select-role");
     } catch (error) {
       setErrorText("Server connection failed");
     } finally {
