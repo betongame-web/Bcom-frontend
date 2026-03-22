@@ -16,7 +16,7 @@ export default function Profile() {
     documentType: "National ID card",
     documentNumber: "",
     documentIssueDate: "",
-    country: "Pakistan",
+    country: "Bangladesh",
     city: "",
     address: ""
   });
