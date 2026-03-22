@@ -502,103 +502,65 @@ export default function Profile() {
                 onChange={handleChange}
                 disabled={fieldLocks.city}
               >
-                <option value="">Select city</option>
-                <option>Abbottabad</option>
-                <option>Abdul Hakeem</option>
-                <option>Ahmedpur East</option>
-                <option>Ahmedpur Sial</option>
-                <option>Akora Khattak</option>
-                <option>Alipur</option>
-                <option>Arifwala</option>
-                <option>Attock</option>
-                <option>Badin</option>
-                <option>Bahawalnagar</option>
-                <option>Bahawalpur</option>
-                <option>Bannu</option>
-                <option>Basirpur</option>
-                <option>Batkhela</option>
-                <option>Bhakkar</option>
-                <option>Bhalwal</option>
-                <option>Bhimber</option>
-                <option>Burewala</option>
-                <option>Chakwal</option>
-                <option>Chaman</option>
-                <option>Charsadda</option>
-                <option>Chichawatni</option>
-                <option>Chiniot</option>
-                <option>Chishtian</option>
-                <option>Dadu</option>
-                <option>Daska</option>
-                <option>Dera Ghazi Khan</option>
-                <option>Dera Ismail Khan</option>
-                <option>Faisalabad</option>
-                <option>Ghotki</option>
-                <option>Gojra</option>
-                <option>Gujranwala</option>
-                <option>Gujrat</option>
-                <option>Gwadar</option>
-                <option>Hafizabad</option>
-                <option>Haripur</option>
-                <option>Hasilpur</option>
-                <option>Haveli Lakha</option>
-                <option>Hyderabad</option>
-                <option>Islamabad</option>
-                <option>Jacobabad</option>
-                <option>Jaranwala</option>
-                <option>Jhang</option>
-                <option>Jhelum</option>
-                <option>Kalat</option>
-                <option>Kamalia</option>
-                <option>Kamoke</option>
-                <option>Karachi</option>
-                <option>Kasur</option>
-                <option>Khairpur</option>
-                <option>Khanewal</option>
-                <option>Khanpur</option>
-                <option>Khuzdar</option>
-                <option>Kohat</option>
-                <option>Kot Addu</option>
-                <option>Kotli</option>
-                <option>Lahore</option>
-                <option>Larkana</option>
-                <option>Layyah</option>
-                <option>Lodhran</option>
-                <option>Mandi Bahauddin</option>
-                <option>Mansehra</option>
-                <option>Mardan</option>
-                <option>Matiari</option>
-                <option>Mianwali</option>
-                <option>Mingora</option>
-                <option>Mirpur</option>
-                <option>Mirpur Khas</option>
-                <option>Multan</option>
-                <option>Muzaffargarh</option>
-                <option>Nankana Sahib</option>
-                <option>Nawabshah</option>
-                <option>Nowshera</option>
-                <option>Okara</option>
-                <option>Pakpattan</option>
-                <option>Peshawar</option>
-                <option>Quetta</option>
-                <option>Rahim Yar Khan</option>
-                <option>Rawalpindi</option>
-                <option>Sadiqabad</option>
-                <option>Sahiwal</option>
-                <option>Sambrial</option>
-                <option>Sargodha</option>
-                <option>Shahdadkot</option>
-                <option>Sheikhupura</option>
-                <option>Shikarpur</option>
-                <option>Sialkot</option>
-                <option>Sukkur</option>
-                <option>Swabi</option>
-                <option>Swat</option>
-                <option>Tando Adam</option>
-                <option>Tando Allahyar</option>
-                <option>Turbat</option>
-                <option>Vehari</option>
-                <option>Wah Cantonment</option>
-                <option>Zhob</option>
+ <option value="">Select city</option>
+<option>Abdullahpur</option>
+<option>Abhaynagar</option>
+<option>Adabar</option>
+<option>Amtali</option>
+<option>Andulia</option>
+<option>Astagram</option>
+<option>Atulia</option>
+<option>Bamna</option>
+<option>Bamundi</option>
+<option>Barguna</option>
+<option>Bauphal</option>
+<option>Bayezid</option>
+<option>Beanibazar</option>
+<option>Bhola</option>
+<option>Bhuapur</option>
+<option>Bhurungamari</option>
+<option>Chakaria</option>
+<option>Chandanaish</option>
+<option>Chandina</option>
+<option>Chowgacha</option>
+<option>Chowmuhani</option>
+<option>Chuadanga</option>
+<option>Debiganj</option>
+<option>Delduar</option>
+<option>Demra</option>
+<option>Dohar</option>
+<option>Domar</option>
+<option>Domsar</option>
+<option>Fulbaria</option>
+<option>Fulgazi</option>
+<option>Haripur</option>
+<option>Harirampur</option>
+<option>Hathazari</option>
+<option>Kalkini</option>
+<option>Kaliganj</option>
+<option>Katiadi</option>
+<option>Kishoreganj</option>
+<option>Mithamoin</option>
+<option>Meherpur</option>
+<option>Mithapukur</option>
+<option>Mouchak</option>
+<option>Moulvibazar</option>
+<option>Nangalkot</option>
+<option>Narail</option>
+<option>Narayanganj</option>
+<option>Pabna</option>
+<option>Palash</option>
+<option>Puthia</option>
+<option>Raozan</option>
+<option>Rayganj</option>
+<option>Shadullapur</option>
+<option>Shahjadpur</option>
+<option>Shyamnagar</option>
+<option>Singair</option>
+<option>Sirajdikhan</option>
+<option>Tangail</option>
+<option>Tarail</option>
+<option>Tarakanda</option>
               </select>
             </div>
             <div className="profile-action-cell">
