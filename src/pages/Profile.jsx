@@ -300,7 +300,7 @@ export default function Profile() {
           <div className="balance-box">
             <div className="balance-left">
               <div className="balance-title-row">
-                <span className="balance-title">Main account (PKR)</span>
+                <span className="balance-title">Main account (BDT)</span>
                 <span className="balance-arrow">⌄</span>
               </div>
               <span className="balance-amount">0</span>
