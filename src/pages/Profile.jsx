@@ -98,7 +98,7 @@ export default function Profile() {
         documentType: profile.documentType || "National ID card",
         documentNumber: profile.documentNumber || "",
         documentIssueDate: profile.documentIssueDate || "",
-        country: profile.country || "Pakistan",
+        country: profile.country || "Bangladesh",
         city: profile.city || "",
         address: profile.address || ""
       }));
