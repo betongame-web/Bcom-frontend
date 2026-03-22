@@ -7,9 +7,7 @@ export default function Profile() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    email: "",
-    password: "********",
-    registration: "18/03/2026",
+    registration: "23/03/2026",
     phone: "",
     lastName: "",
     firstName: "",
